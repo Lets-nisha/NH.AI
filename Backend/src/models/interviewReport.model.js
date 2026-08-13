@@ -1,4 +1,4 @@
-const mongooes = require("mongoose");
+const mongoose = require("mongoose");
 
 /**
  * job description schema : String
@@ -13,36 +13,78 @@ const mongooes = require("mongoose");
  * presentation plan : [{day: Number, focus: string, task: [string]}]
  */
 
-const technicalQuestionsSchema = new mongooes.Schema({
-    question: { type: String, required: true },
-    intention: { type: String, required: true },
-    answer: { type: String, required: true }
+const technicalQuestionsSchema = new mongoose.Schema({
+    question: {
+        type: String,
+        required: true
+    },
+    intention: {
+        type: String,
+        required: true
+    },
+    answer: {
+        type: String,
+        required: true
+    }
 }, {
     _id: false
 });
 
-const behavioralQuestionsSchema = new mongooes.Schema({
-    question: { type: String, required: true },
-    intention: { type: String, required: true },
-    answer: { type: String, required: true }
+const behavioralQuestionsSchema = new mongoose.Schema({
+    question:
+    {
+        type: String,
+        required: true
+    },
+    intention:
+    {
+        type: String,
+        required: true
+    },
+    answer:
+    {
+        type: String,
+        required: true
+    }
 }, {
     _id: false
 });
 
-const skillsGapsSchema = new mongooes.Schema({
-    skill: { type: String, required: [true, "Skill is required"] },
-    severity: { type: String, enum: ["low", "medium", "high"], required: [true, "Severity is required"] },
+const skillsGapsSchema = new mongoose.Schema({
+    skill:
+    {
+        type: String,
+        required: [true, "Skill is required"]
+
+    },
+    severity:
+    {
+        type: String,
+        enum: ["low", "medium", "high"],
+        required: [true, "Severity is required"]
+    },
 }, {
     _id: false
 });
 
-const presentationPlanSchema = new mongooes.Schema({
-    day: { type: Number, required: [true, "Day is required"] },
-    focus: { type: String, required: [true, "Focus is required"] },
-    task: [{ type: String, required: [true, "Task is required"] }]
+const presentationPlanSchema = new mongoose.Schema({
+    day: {
+        type: Number,
+        required: [true, "Day is required"]
+    },
+    focus: {
+        type: String,
+        required: [true, "Focus is required"]
+    },
+    task: [
+        {
+            type: String,
+            required: [true, "Task is required"]
+        }
+    ]
 });
 
-const interviewReportSchema = new mongooes.Schema(
+const interviewReportSchema = new mongoose.Schema(
     {
         jobDescription: { type: String, required: true },
         resumeText: { type: String },
@@ -56,6 +98,6 @@ const interviewReportSchema = new mongooes.Schema(
     timestamps: true
 })
 
-const interviewReportModel = mongooes.model("InterviewReport", interviewReportSchema);
+const interviewReportModel = mongoose.model("InterviewReport", interviewReportSchema);
 
 module.exports = interviewReportModel;
